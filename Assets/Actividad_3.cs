@@ -6,28 +6,37 @@ public class Actividad_3 : MonoBehaviour
 {
     public float estatura, peso;
     public bool hombre, mujer;
-    private float vitaminas;
+    private float vitaminas, estaturaCalculo;
     // Start is called before the first frame update
     void Start()
     {
-        if(hombre==true && mujer==false && (estatura>=1.6f && peso>=150f) )
+        if(estatura<=2.5f)
         {
-            vitaminas = (estatura * 0.2f) + (peso * 0.8f);
+            estaturaCalculo=estatura;
+        }
+        else
+        {
+            estaturaCalculo = estatura / 100f;
+        }
+
+        if(hombre==true && mujer==false && (estaturaCalculo>=1.6f && peso>=150f) )
+        {
+            vitaminas = (estaturaCalculo * 0.2f) + (peso * 0.8f);
             Debug.Log(vitaminas);
         }
-        else if (hombre == true && mujer == false && (estatura < 1.6f || peso < 150f))
+        else if (hombre == true && mujer == false && (estaturaCalculo < 1.6f || peso < 150f))
         {
-            vitaminas = (estatura * 0.3f) + (peso * 0.7f);
+            vitaminas = (estaturaCalculo * 0.3f) + (peso * 0.7f);
             Debug.Log(vitaminas);
         }
-        if (hombre == false && mujer == true && (estatura >= 1.5f && peso >= 130f))
+        if (hombre == false && mujer == true && (estaturaCalculo >= 1.5f && peso >= 130f))
         {
-            vitaminas = (estatura * 0.25f) + (peso * 0.75f);
+            vitaminas = (estaturaCalculo * 0.25f) + (peso * 0.75f);
             Debug.Log(vitaminas);
         }
-        else if (hombre == false && mujer == true && (estatura < 1.5f || peso < 130f))
+        else if (hombre == false && mujer == true && (estaturaCalculo < 1.5f || peso < 130f))
         {
-            vitaminas = (estatura * 0.35f) + (peso * 0.65f);
+            vitaminas = (estaturaCalculo * 0.35f) + (peso * 0.65f);
             Debug.Log(vitaminas);
         }
         if (hombre == false && mujer == false)
